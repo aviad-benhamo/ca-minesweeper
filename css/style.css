@@ -238,3 +238,10 @@ body.light-mode .cell.mistake {
 body.light-mode .cell.safecell {
     background-color: rgb(54, 90, 67);
 }
+
+/* fix theme-toggle button */
+@media (max-width: 600px) {
+    .main-table {
+        margin-top: 80px;
+    }
+}
