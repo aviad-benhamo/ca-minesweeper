@@ -95,6 +95,12 @@ This project does not use environment variables, external services, package inst
 - The project currently has no automated test suite.
 - Validate changes manually in a browser after editing gameplay, layout, or assets.
 
+Run the lightweight static check:
+
+```bash
+node scripts/check-static-assets.mjs
+```
+
 Suggested manual validation:
 
 1. Open the game locally.
@@ -102,6 +108,8 @@ Suggested manual validation:
 3. Reveal cells, place and remove flags, and use the helper buttons.
 4. Confirm win and loss states still work.
 5. Toggle between dark and light mode.
+
+See [docs/quality-checks.md](docs/quality-checks.md) for the full validation process and browser QA checklist.
 
 ## AI Notice
 
