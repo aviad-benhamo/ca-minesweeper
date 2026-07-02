@@ -8,6 +8,7 @@ This project follows Semantic Versioning where practical.
 
 ### Added
 
+- Added final GRS public-release readiness review documentation.
 - Added GRS baseline repository files:
   - `LICENSE`
   - `.gitignore`

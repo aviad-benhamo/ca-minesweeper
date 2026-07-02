@@ -154,6 +154,10 @@ AI assistants working in this repository should follow `AGENTS.md` and the GitHu
 
 See [CHANGELOG.md](CHANGELOG.md).
 
+## Release Readiness
+
+See [docs/release-readiness.md](docs/release-readiness.md) for the final GRS public-release readiness review.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
