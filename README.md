@@ -27,7 +27,7 @@ CA Minesweeper is a classic Minesweeper implementation written with plain HTML, 
 ## Screenshots and Demo
 
 - Live demo: <https://aviad-benhamo.github.io/ca-minesweeper/>
-- Screenshots are not included yet. If screenshots are added later, prefer storing them under `assets/screenshots/` or another documented static asset directory.
+- Screenshot: [assets/screenshots/game-board.png](assets/screenshots/game-board.png)
 
 ## Quick Start
 
@@ -77,8 +77,11 @@ This project does not use environment variables, external services, package inst
 |-- js/
 |   |-- game.js         # Minesweeper game state, rules, and UI handlers
 |   `-- utils.js        # Shared browser utility helpers
-|-- pics/               # Icons and image assets
-|-- sounds/             # Game sound effects
+|-- assets/
+|   |-- images/         # Game image assets
+|   |-- logo/           # Favicon and logo assets
+|   |-- screenshots/    # Documentation screenshots
+|   `-- sounds/         # Game sound effects
 |-- CHANGELOG.md        # Notable project changes
 |-- SECURITY.md         # Security policy
 `-- LICENSE             # MIT license

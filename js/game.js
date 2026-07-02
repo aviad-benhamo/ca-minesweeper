@@ -239,7 +239,7 @@ function checkGameOver() {
         }
     }
     //end the game
-    playSound("victory_sound")
+    playSound("victory-sound")
     gGame.isOn = false
     stopTimer(gTimerInterval)
     const elSmiley = document.querySelector(".smiley")

@@ -341,11 +341,10 @@ function stopTimer(intervalId) {
 
 /**
  * Plays an audio file by its name.
- * Assumes audio files are in a folder (e.g., 'sounds/') and have an extension (e.g., '.mp3')
+ * Assumes audio files are in the assets/sounds folder and have an .mp3 extension.
  * @param {string} soundName - The name of the sound (e.g., 'pop', 'win')
  */
 function playSound(soundName) {
-    // Adjust the path and extension as needed for your project structure
-    const audio = new Audio(`sounds/${soundName}.mp3`)
+    const audio = new Audio(`assets/sounds/${soundName}.mp3`)
     audio.play()
 }
