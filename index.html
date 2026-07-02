@@ -10,7 +10,7 @@
 </head>
 
 <body onload="onInit()" oncontextmenu="return false;">
-    <button class="theme-toggle-btn" onclick="toggleTheme()">🌓</button>
+    <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle color theme">&#x1F313;</button>
 
     <div class="main-table">
 
@@ -26,10 +26,10 @@
             <button onclick="onInit()" class="smiley"></button>
 
             <div class="safe-cell-btns">
-                <button onclick="onHintClick(this)"><img class="hint" src="assets/images/hint.jpg"></button>
-                <button onclick="onHintClick(this)"><img class="hint" src="assets/images/hint.jpg"></button>
-                <button onclick="onHintClick(this)"><img class="hint" src="assets/images/hint.jpg"></button>
-                <button onclick="mineExterminator(this)"><img class="exterminator" src="assets/images/exterminator.png"></button>
+                <button onclick="onHintClick(this)"><img class="hint" src="assets/images/hint.jpg" alt="Hint"></button>
+                <button onclick="onHintClick(this)"><img class="hint" src="assets/images/hint.jpg" alt="Hint"></button>
+                <button onclick="onHintClick(this)"><img class="hint" src="assets/images/hint.jpg" alt="Hint"></button>
+                <button onclick="mineExterminator(this)"><img class="exterminator" src="assets/images/exterminator.png" alt="Mine exterminator"></button>
             </div>
         </div>
 

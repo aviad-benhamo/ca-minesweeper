@@ -21,6 +21,14 @@ var gBoard
 var gTimerInterval
 var gLives
 
+const ICONS = {
+    reset: '\u{1F60A}',
+    flag: '\u{1F3F4}',
+    mine: '\u{1F4A3}',
+    lost: '\u{1F612}',
+    won: '\u{1F60E}',
+}
+
 function onInit() {
     //reset gLevel based on current settings
     gLevel = { ...gCurrentLevelSettings }
@@ -41,7 +49,7 @@ function onInit() {
     const elTimer = document.querySelector(".timer")
     elTimer.innerText = "0.00"
     const elSmiley = document.querySelector(".smiley")
-    elSmiley.innerText = `😊`
+    elSmiley.innerText = ICONS.reset
 
     resetHintButtons()
     minesCounter()
@@ -78,9 +86,9 @@ function renderBoard(board) {
             if (cell.isMarked) className += ' marked'
 
             if (cell.isMarked) {
-                cellContent = '🏴'
+                cellContent = ICONS.flag
             } else if (cell.isMine) {
-                cellContent = '💣'
+                cellContent = ICONS.mine
             } else if (cell.minesAroundCount > 0) {
                 cellContent = cell.minesAroundCount
             }
@@ -129,8 +137,8 @@ function cellClicked(elCell, i, j) {
         gTimerInterval = startTimer(".timer")
         //Create mines in rand location
         for (var c = 0; c < gLevel.MINES; c++) {
-            var randI = getRandomInt(0, gBoard.length - 1)
-            var randj = getRandomInt(0, gBoard.length - 1)
+            var randI = getRandomInt(0, gBoard.length)
+            var randj = getRandomInt(0, gBoard.length)
             if ((randI === i && randj === j) ||
                 gBoard[randI][randj].isMine) {
                 //if it is true it will skip and try again
@@ -170,7 +178,7 @@ function cellClicked(elCell, i, j) {
                     if (gBoard[row][col].isMine) {
                         var elMineCell = document.querySelector(`.cell-${row}-${col}`)
                         //force change flags icons to mines
-                        elMineCell.innerText = '💣'
+                        elMineCell.innerText = ICONS.mine
                         elMineCell.classList.add('revealed')
                     }
                 }
@@ -178,7 +186,7 @@ function cellClicked(elCell, i, j) {
             playSound("lose")
             //sad smiley
             const elSmiley = document.querySelector(".smiley")
-            elSmiley.innerText = `😒`
+            elSmiley.innerText = ICONS.lost
             return
         }
 
@@ -209,14 +217,14 @@ function onCellMarked(elCell, i, j) {
     if (cell.isMarked) {
         gGame.markedCount++
         elCell.classList.add('marked')
-        elCell.innerText = '🏴'
+        elCell.innerText = ICONS.flag
     } else {
         gGame.markedCount--
         elCell.classList.remove('marked')
 
         var originalContent = '' //restore prev cell content [mine/count of mines around / empry cell]
         if (cell.isMine) {
-            originalContent = '💣'
+            originalContent = ICONS.mine
         } else if (cell.minesAroundCount > 0) {
             originalContent = cell.minesAroundCount
         }
@@ -243,7 +251,7 @@ function checkGameOver() {
     gGame.isOn = false
     stopTimer(gTimerInterval)
     const elSmiley = document.querySelector(".smiley")
-    elSmiley.innerText = `😎`
+    elSmiley.innerText = ICONS.won
 }
 
 function beginnerLevel() {
@@ -341,7 +349,7 @@ function onHintClick(elem) {
     }
     //Ignore empty array
     if (safeCells.length > 0) {
-        var randSafeCell = safeCells[getRandomInt(0, safeCells.length - 1)]
+        var randSafeCell = safeCells[getRandomInt(0, safeCells.length)]
         var elCell = document.querySelector(`.cell-${randSafeCell.i}-${randSafeCell.j}`)
         elCell.classList.add('safecell')
         setTimeout(() => {
@@ -375,15 +383,16 @@ function mineExterminator(elem) {
     }
     //On Beginner level remove just 1 random mine
     if (mines.length === 2) {
-        var randMineCell = mines[getRandomInt(0, mines.length - 1)]
+        var randMineCell = mines[getRandomInt(0, mines.length)]
         gBoard[randMineCell.i][randMineCell.j].isMine = false
         gLevel.MINES -= 1
     } else {
         for (var i = 0; i < 3; i++) {
-            randMineCell = mines[getRandomInt(0, mines.length - 1)]
+            var randMineIdx = getRandomInt(0, mines.length)
+            randMineCell = mines[randMineIdx]
             gBoard[randMineCell.i][randMineCell.j].isMine = false
             //remove that object to avoid duplicates
-            mines.splice(randMineCell, 1)
+            mines.splice(randMineIdx, 1)
             gLevel.MINES -= 1
         }
     }
