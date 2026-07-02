@@ -38,26 +38,61 @@ git clone https://github.com/aviad-benhamo/ca-minesweeper.git
 cd ca-minesweeper
 ```
 
-Run the game:
+Run the game with either local option:
 
 ```bash
 # Option 1: open index.html directly in a browser.
+# This is supported because the game uses plain local HTML, CSS, JavaScript,
+# images, and sounds.
 
 # Option 2: serve the folder with any static file server.
 python -m http.server 8000
 ```
 
-Then open:
+When using a static server, open:
 
 ```text
 http://localhost:8000/
 ```
+
+A local static server is recommended for day-to-day development because it more closely matches GitHub Pages hosting and avoids browser-specific restrictions around local files.
 
 ## Configuration
 
 No configuration is required.
 
 This project does not use environment variables, external services, package installation, or build-time configuration.
+
+## Development Workflow
+
+CA Minesweeper intentionally stays dependency-free. Do not run an install step after cloning; there is no `package.json`, lockfile, or vendored dependency directory.
+
+Development loop:
+
+1. Edit `index.html`, `css/style.css`, files under `js/`, or assets as needed.
+2. Run the game through a local static server, preferably `python -m http.server 8000`.
+3. Open `http://localhost:8000/` in a current desktop browser.
+4. Use the manual browser QA checklist in [docs/quality-checks.md](docs/quality-checks.md).
+5. Run the lightweight static asset check when Node.js is available:
+
+```bash
+node scripts/check-static-assets.mjs
+```
+
+Browser assumptions:
+
+- A current Chromium, Firefox, or Safari desktop browser.
+- Standard browser support for DOM APIs, CSS custom properties, audio playback, and right-click context-menu suppression.
+- User-triggered audio playback; browser autoplay rules may prevent sounds until after interaction.
+
+Build and test status:
+
+- Build step: none.
+- Runtime dependencies: none.
+- Environment variables: none.
+- Automated test framework: none.
+- Static validation: `node scripts/check-static-assets.mjs`.
+- Manual validation: browser QA checklist in [docs/quality-checks.md](docs/quality-checks.md).
 
 ## Design Principles
 
@@ -92,7 +127,7 @@ This project does not use environment variables, external services, package inst
 - The game starts through `onInit()` in `index.html`.
 - Main game behavior lives in `js/game.js`.
 - Shared helpers live in `js/utils.js`.
-- The project currently has no automated test suite.
+- The project currently has no automated test framework; use the static asset check plus manual browser QA.
 - Validate changes manually in a browser after editing gameplay, layout, or assets.
 
 Run the lightweight static check:

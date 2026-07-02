@@ -1,6 +1,24 @@
 # Quality Checks
 
-CA Minesweeper is a static browser project with no build step or package manager. Use these checks before merging changes that affect gameplay, layout, documentation, or assets.
+CA Minesweeper is a dependency-free static browser project with no build step, package manager, runtime services, or environment variables. Use these checks before merging changes that affect gameplay, layout, documentation, or assets.
+
+## Local Run Options
+
+The game can be opened directly through `index.html` because all runtime files are local static assets.
+
+For regular development, prefer a local static server because it behaves more like GitHub Pages hosting:
+
+```bash
+python -m http.server 8000
+```
+
+Then open:
+
+```text
+http://localhost:8000/
+```
+
+No install step is required.
 
 ## Automated Static Checks
 
@@ -12,19 +30,9 @@ node scripts/check-static-assets.mjs
 
 The script verifies that local files referenced by `index.html` exist, that required project entry files are present, and that sound assets used by the game are available.
 
+This is a static validation script, not a full automated game test suite. There is currently no unit, integration, or end-to-end test framework.
+
 ## Manual Browser QA
-
-Run the game locally:
-
-```bash
-python -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000/
-```
 
 Complete this checklist in a current desktop browser:
 
