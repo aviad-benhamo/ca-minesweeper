@@ -31,6 +31,8 @@ This repository follows the GitHub Repository Standard (GRS). Use the GRS as the
 - Keep work scoped to the issue or task.
 - Add a final implementation summary comment to the relevant GitHub issue when the task is complete.
 - Do not close issues unless explicitly instructed.
+- Creating or updating GitHub issues/comments is allowed when requested or required by the issue workflow.
+- Pushing branches, opening PRs, or triggering remote CI should not happen unless explicitly requested.
 
 ## Branch and Commit Rules
 
@@ -43,6 +45,16 @@ This repository follows the GitHub Repository Standard (GRS). Use the GRS as the
 - Work on a dedicated branch for each issue or task.
 - Prefer concise English commit messages.
 - Prefer Conventional Commits where appropriate.
+
+## Local-First Commit Policy
+
+- Default workflow is local-first.
+- Do not create commits unless explicitly instructed by the user.
+- Do not push branches to GitHub unless explicitly instructed by the user.
+- After completing changes, leave the working tree ready for user review.
+- Provide a clear summary of changed files, validation performed, and recommended next steps.
+- The user normally reviews changes locally, creates the commit, merges into local `main`, and pushes to GitHub when ready.
+- PR-based workflow is allowed only when explicitly requested.
 
 ## Scope Control
 
